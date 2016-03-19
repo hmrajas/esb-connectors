@@ -48,7 +48,7 @@ public class FeedDeletion extends AbstractConnector {
             resp = abderaClient.delete(entryUri);
             response.InjectMessage(messageContext, resp.getStatusText());
         } catch (Exception ex) {
-            handleException("error while connect " + ex.getMessage(), ex, messageContext);
+            handleException("Error while connect " + ex.getMessage(), ex, messageContext);
         }
     }
 }

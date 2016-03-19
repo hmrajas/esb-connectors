@@ -47,15 +47,15 @@ public class FeedUpdation extends AbstractConnector {
         try {
             doc = abderaClient.get(entryUri).getDocument();
         } catch (Exception e) {
-            handleException("error while get the entry from server ", e, messageContext);
+            handleException("Error while get the entry from server ", e, messageContext);
         }
-        if (title != null) {
+        if (!StringUtils.isEmpty(title)) {
             doc.getRoot().getTitleElement().setText(title);
         }
-        if (content != null) {
+        if (!StringUtils.isEmpty(content)) {
             doc.getRoot().getContentElement().setText(content);
         }
-        if (author != null) {
+        if (!StringUtils.isEmpty(author)) {
             doc.getRoot().getAuthor().setText(author);
         }
         RequestOptions opts = new RequestOptions();
@@ -66,7 +66,7 @@ public class FeedUpdation extends AbstractConnector {
             FeedUtil response = new FeedUtil();
             response.InjectMessage(messageContext, resp.getStatusText());
         } catch (Exception ex) {
-            handleException("error while update the entry: ", ex, messageContext);
+            handleException("Error while update the entry: ", ex, messageContext);
         }
     }
 }
